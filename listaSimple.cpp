@@ -55,6 +55,7 @@ class lista {
     void DOS(int num);
     void TRES();
     void CUATRO();
+    pnodo RetornarNodo(int pos);
    private:
     pnodo primero; 
    
@@ -245,6 +246,16 @@ void lista::Mostrar()
 		cout << endl;
    }
 }
+pnodo lista::RetornarNodo(int pos){
+	pnodo buscar = primero;
+	int cont = 1;
+	while(cont!=pos){
+		buscar = buscar->siguiente;
+		cont++;
+	}
+	return buscar;
+	
+}
 
 void lista::UNO(lista& lista2){
 	if(largoLista()!=lista2.largoLista()){
@@ -269,17 +280,11 @@ void lista::UNO(lista& lista2){
 				}
 				int centro1 = buscarC->valor;
 				int centro2 = buscarC2->valor;
-				
-				int contador = 0;
 				lista listaF;
 				
-				while(contador!=largoLista()-1){
-					listaF.InsertarFinal();
-					listaF.InsertarFinal();
-					listaF.InsertarFinal();
-					listaF.InsertarFinal();
-					contador++;
-				}
+				
+				
+			
 			}
 		}
 	}

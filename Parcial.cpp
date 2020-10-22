@@ -20,7 +20,7 @@ int main(){
 	listaAux.InsertarFinal(7);
 	listaAux.InsertarFinal(9);
 	listaAux.InsertarFinal(10);
-	listaAux.InsertarFinal(14);
+	listaAux.InsertarFinal(14);s
 	
 	lista listaAux2;
 	listaAux2.InsertarFinal(5);
