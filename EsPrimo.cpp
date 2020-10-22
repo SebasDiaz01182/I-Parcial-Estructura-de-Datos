@@ -21,8 +21,17 @@ int main(){
 	listaAux.InsertarFinal(9);
 	listaAux.InsertarFinal(10);
 	listaAux.InsertarFinal(14);
-	listaAux.InsertarFinal(14);
 	
+	lista listaAux2;
+	listaAux2.InsertarFinal(5);
+	listaAux2.InsertarFinal(7);
+	listaAux2.InsertarFinal(4);
+	listaAux2.InsertarFinal(6);
+	listaAux2.InsertarFinal(18);
+	//UNO
+	cout<<"EJERCICIO UNO"<<endl;
+	listaAux.UNO(listaAux2);
+	cout<<endl;
 	//DOS
 	cout<<"EJERCICIO DOS"<<endl;
 	lista ListaPrimos;

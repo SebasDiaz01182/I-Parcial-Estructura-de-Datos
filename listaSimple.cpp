@@ -51,6 +51,7 @@ class lista {
     void BorrarInicio();
     void borrarPosicion(int pos);
     int largoLista();
+    void UNO(lista& lista2);
     void DOS(int num);
     void TRES();
     void CUATRO();
@@ -243,6 +244,46 @@ void lista::Mostrar()
 		}
 		cout << endl;
    }
+}
+
+void lista::UNO(lista& lista2){
+	if(largoLista()!=lista2.largoLista()){
+		cout<<"Las listas no son del mismo largo"<<endl;
+	}else{
+		bool condicion = largoLista()%2==1;
+		if(!condicion){
+			cout<<"Las listas no son impares"<<endl;
+		}else{
+			bool condicion2 = largoLista()!=1;
+			if(!condicion2){
+				cout<<"Las listas son de largo 1"<<endl;
+			}else{
+				pnodo buscarC = primero;
+				pnodo buscarC2 = lista2.primero;
+				int cont = 0;
+				int limite = (largoLista()-1)/2;
+				while(cont < limite ){
+					buscarC = buscarC->siguiente;
+					buscarC2 = buscarC2->siguiente;
+					cont++;
+				}
+				int centro1 = buscarC->valor;
+				int centro2 = buscarC2->valor;
+				
+				int contador = 0;
+				lista listaF;
+				
+				while(contador!=largoLista()-1){
+					listaF.InsertarFinal();
+					listaF.InsertarFinal();
+					listaF.InsertarFinal();
+					listaF.InsertarFinal();
+					contador++;
+				}
+			}
+		}
+	}
+	
 }
 void lista::DOS(int num){
 	for(int valor = 0;valor<=num;valor++){
