@@ -40,6 +40,7 @@ class lista {
     ~lista();
     void InsertarInicio(int v);
     void InsertarFinal(int v);
+    void InsertarPos(int v, int pos) ;
     bool ListaVacia() { return primero == NULL; } 
     void Mostrar();
     int largoLista();
@@ -112,6 +113,36 @@ void lista::InsertarFinal(int v)
           aux= aux->siguiente;
         aux->siguiente=new nodo(v);
       }    
+}
+void lista::InsertarPos(int v, int pos) 
+{
+   if (ListaVacia())
+     primero = new nodo(v);
+   else{
+        if(pos <=1){
+          pnodo nuevo = new nodo(v);
+          nuevo->siguiente= primero;
+          primero= nuevo;
+        }
+        else
+        {
+            if (pos>=largoLista())
+               InsertarFinal(v);
+            else
+            {
+
+             pnodo aux= primero;
+             int i =2;
+             while((i != pos )&&(aux->siguiente!= NULL)){
+                   i++;
+                   aux=aux->siguiente;
+             }
+             pnodo nuevo= new nodo(v); 
+             nuevo->siguiente=aux->siguiente; 
+             aux->siguiente=nuevo;
+            }
+        }
+	}
 }
 
 void lista::Mostrar()
@@ -190,7 +221,10 @@ void lista::UNO(lista& lista2){
 	
 }
 void lista::DOS(int num){
-	for(int valor = 0;valor<=num;valor++){
+	if(num<0){
+	cout<<"El numero es menor que 0"<<endl;
+	}else{
+		for(int valor = 0;valor<=num;valor++){
 		if(esPrimo(valor)){
 			InsertarFinal(valor);
 		}
@@ -200,23 +234,38 @@ void lista::DOS(int num){
 	}
 	cout<<"Lista con los numeros primos: "<<endl;
 	Mostrar();
+	}
 }
+
 void lista::TRES(){
-    lista listaN;
     if (ListaVacia()){
            cout << "La lista esta vacia"<<endl;; 
     }else{
         pnodo aux = primero;
-        while(aux!=NULL) {
-            listaN.InsertarFinal(aux->valor+1);
-            listaN.InsertarFinal(aux->valor);
-            listaN.InsertarFinal(aux->valor-1);
-            aux = aux->siguiente;
+        int cont = 1;
+        int largo = largoLista();
+        while(largo!=0) {
+        	if(aux->siguiente->siguiente==NULL){
+        		pnodo final = aux;
+        		aux=aux->siguiente;
+        		InsertarPos(aux->valor-1, cont+3);
+        		InsertarPos(aux->valor+1, cont+1);
+	            InsertarPos(final->valor+1, cont);
+	            InsertarPos(final->valor-1, cont+2);
+        		break;
+			}else{
+				InsertarPos(aux->valor+1, cont);
+	            InsertarPos(aux->valor-1, cont+2);
+	            aux = aux->siguiente->siguiente;
+	            cont = cont+3;
+	            largo--;	
+			}
         }
-    cout<<"Lista antecesor y sucesor: "<<endl;
-    listaN.Mostrar();
+    cout<<"Lista sucesor y antecesor: "<<endl;
+    Mostrar();
    }
 }
+
 void lista::CUATRO(){
 	lista nueva;
 	pnodo recorrer = primero;

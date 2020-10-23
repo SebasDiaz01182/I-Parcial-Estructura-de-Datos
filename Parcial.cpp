@@ -14,22 +14,22 @@ using namespace std;
 //Main
 int main(){
 	lista listaAux;
-	listaAux.InsertarFinal();
-	listaAux.InsertarFinal();
-	listaAux.InsertarFinal();
-	listaAux.InsertarFinal();
-	listaAux.InsertarFinal();
-	listaAux.InsertarFinal();
-	listaAux.InsertarFinal();
+	listaAux.InsertarFinal(12);
+	listaAux.InsertarFinal(2);
+	listaAux.InsertarFinal(5);
+	listaAux.InsertarFinal(43);
+	listaAux.InsertarFinal(7);
+	listaAux.InsertarFinal(43);
+	listaAux.InsertarFinal(9);
 	
 	lista listaAux2;
-	listaAux2.InsertarFinal();
-	listaAux2.InsertarFinal();
-	listaAux2.InsertarFinal();
-	listaAux2.InsertarFinal();
-	listaAux2.InsertarFinal();
-	listaAux2.InsertarFinal();
-	listaAux2.InsertarFinal();
+	listaAux2.InsertarFinal(5);
+	listaAux2.InsertarFinal(3);
+	listaAux2.InsertarFinal(2);
+	listaAux2.InsertarFinal(43);
+	listaAux2.InsertarFinal(1);
+	listaAux2.InsertarFinal(2);
+	listaAux2.InsertarFinal(2);
 	//UNO
 	cout<<"EJERCICIO UNO"<<endl;
 	listaAux.UNO(listaAux2);
@@ -38,7 +38,7 @@ int main(){
 	//DOS
 	cout<<"EJERCICIO DOS"<<endl;
 	lista ListaPrimos;
-	ListaPrimos.DOS(21);
+	ListaPrimos.DOS(89);
 	cout<<endl;
 	
 	//TRES
