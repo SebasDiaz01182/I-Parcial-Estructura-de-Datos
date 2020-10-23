@@ -11,36 +11,41 @@ Sebastian Diaz Obando
 #include "listaSimple.cpp"
 using namespace std;
 
-
-
 //Main
 int main(){
 	lista listaAux;
-	listaAux.InsertarFinal(5);
-	listaAux.InsertarFinal(7);
-	listaAux.InsertarFinal(9);
-	listaAux.InsertarFinal(10);
-	listaAux.InsertarFinal(14);s
+	listaAux.InsertarFinal();
+	listaAux.InsertarFinal();
+	listaAux.InsertarFinal();
+	listaAux.InsertarFinal();
+	listaAux.InsertarFinal();
+	listaAux.InsertarFinal();
+	listaAux.InsertarFinal();
 	
 	lista listaAux2;
-	listaAux2.InsertarFinal(5);
-	listaAux2.InsertarFinal(7);
-	listaAux2.InsertarFinal(4);
-	listaAux2.InsertarFinal(6);
-	listaAux2.InsertarFinal(18);
+	listaAux2.InsertarFinal();
+	listaAux2.InsertarFinal();
+	listaAux2.InsertarFinal();
+	listaAux2.InsertarFinal();
+	listaAux2.InsertarFinal();
+	listaAux2.InsertarFinal();
+	listaAux2.InsertarFinal();
 	//UNO
 	cout<<"EJERCICIO UNO"<<endl;
 	listaAux.UNO(listaAux2);
 	cout<<endl;
+	
 	//DOS
 	cout<<"EJERCICIO DOS"<<endl;
 	lista ListaPrimos;
-	ListaPrimos.DOS(15);
+	ListaPrimos.DOS(21);
 	cout<<endl;
+	
 	//TRES
 	cout<<"EJERCICIO TRES"<<endl;
 	listaAux.TRES();
 	cout<<endl;
+	
 	//CUATRO
 	cout<<"EJERCICIO CUATRO"<<endl;
 	listaAux.CUATRO();

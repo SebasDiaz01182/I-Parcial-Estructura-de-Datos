@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 class nodo { 
 	
    public:
@@ -19,7 +18,6 @@ class nodo {
        veces = 1;
        siguiente = signodo;
     }
-
 
    private: 
     int valor;
@@ -42,14 +40,8 @@ class lista {
     ~lista();
     void InsertarInicio(int v);
     void InsertarFinal(int v);
-    void InsertarPos (int v, int pos);
     bool ListaVacia() { return primero == NULL; } 
-    void Imprimir();
     void Mostrar();
-    void Primero();
-	void BorrarFinal();
-    void BorrarInicio();
-    void borrarPosicion(int pos);
     int largoLista();
     void UNO(lista& lista2);
     void DOS(int num);
@@ -122,112 +114,6 @@ void lista::InsertarFinal(int v)
       }    
 }
 
-void lista::InsertarPos(int v, int pos) 
-{
-   if (ListaVacia())
-     primero = new nodo(v);
-   else{
-        if(pos <=1){                     
-          pnodo nuevo = new nodo(v);
-          nuevo->siguiente= primero;
-          primero= nuevo;     
-        }      
-        else
-		{
-        	if (pos>=largoLista())
-			   InsertarFinal(v);
-			else
-			{
-			
-             pnodo aux= primero;
-             int i =2;
-             while((i != pos )&&(aux->siguiente!= NULL)){
-                   i++;
-                   aux=aux->siguiente;
-             }
-             pnodo nuevo= new nodo(v); 
-             nuevo->siguiente=aux->siguiente; 
-             aux->siguiente=nuevo;
-            }
-             
-        }
-        }
-}
-      
-void lista::BorrarFinal()
-{
-    if (ListaVacia()){
-     cout << "No hay elementos en la lista:" << endl;
-    
-   }else{
-        if (primero->siguiente == NULL) {
-                primero= NULL;
-            } else {
-
-                pnodo aux = primero;
-                while (aux->siguiente->siguiente != NULL) {
-                    aux = aux->siguiente;
-
-                }
-                
-              pnodo temp = aux->siguiente;
-              aux->siguiente= NULL;
-
-                
-                delete temp;
-            }
-        }
-}
-
-void lista::BorrarInicio()
-{
-    if (ListaVacia()){
-     cout << "No hay elementos en la lista:" << endl;
-    
-   }else
-   {
-        if (primero->siguiente == NULL)
-		{
-        	    pnodo temp=primero;
-                primero= NULL;
-                delete temp;
-        }
-		else
-		{
-
-                pnodo aux = primero;
-                primero=primero->siguiente;                
-                delete aux;
-        }
-   }
-}
-
-
-
-void lista:: borrarPosicion(int pos){
-     if(ListaVacia()){
-              cout << "Lista vacia" <<endl;
-    }else{
-         if((pos>largoLista())||(pos<0)){
-        cout << "Error en posicion" << endl;
-        }else{
-        if(pos==1){
-        primero=primero->siguiente;
-        }else{
-          int cont=2;
-            pnodo aux=  primero;
-            while(cont<pos){
-             aux=aux->siguiente;
-             cont++;
-            }
-            aux->siguiente=aux->siguiente->siguiente;
-            }
-        }
-     }
-
-}
- 
-
 void lista::Mostrar()
 {
    nodo *aux;
@@ -281,10 +167,23 @@ void lista::UNO(lista& lista2){
 				int centro1 = buscarC->valor;
 				int centro2 = buscarC2->valor;
 				lista listaF;
-				
-				
-				
-			
+				int L1 = cont;
+				int L2 = cont+2;
+				int LS1 = 1;
+				int LS2 = largoLista();
+				while(limite!=0){
+					listaF.InsertarFinal((lista2.RetornarNodo(L1)->valor)*centro1);
+					L1--;
+					listaF.InsertarFinal((lista2.RetornarNodo(L2)->valor)*centro1);
+					L2++;
+					listaF.InsertarFinal((RetornarNodo(LS1)->valor)*centro2);
+					LS1++;
+					listaF.InsertarFinal((RetornarNodo(LS2)->valor)*centro2);
+					LS2--;
+					limite--;
+				}
+				cout<<"Lista Final: "<<endl;
+				listaF.Mostrar();
 			}
 		}
 	}
@@ -304,8 +203,8 @@ void lista::DOS(int num){
 }
 void lista::TRES(){
     lista listaN;
-    if (primero == NULL){
-           cout << "No hay elementos"; 
+    if (ListaVacia()){
+           cout << "La lista esta vacia"<<endl;; 
     }else{
         pnodo aux = primero;
         while(aux!=NULL) {
@@ -314,6 +213,7 @@ void lista::TRES(){
             listaN.InsertarFinal(aux->valor-1);
             aux = aux->siguiente;
         }
+    cout<<"Lista antecesor y sucesor: "<<endl;
     listaN.Mostrar();
    }
 }
@@ -339,12 +239,15 @@ void lista::CUATRO(){
 		else{
 			recorrer=recorrer->siguiente;
 		}
-		
 	}
-	pnodo final = nueva.primero;
+	pnodo final = nueva.primero; bool flag= false;
+	cout<<"Lista con contador de repetidos: "<<endl;
 	while(final!=NULL){
+		flag=true;
 		cout<<final->valor<<"-"<<final->veces<<"->";
 		final = final->siguiente;
+	}if(!flag){
+		cout<<"La lista esta vacia"<<endl;
 	}
 }
 
