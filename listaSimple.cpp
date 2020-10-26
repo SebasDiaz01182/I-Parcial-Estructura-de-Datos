@@ -218,8 +218,8 @@ void lista::UNO(lista& lista2){
 			}
 		}
 	}
-	
 }
+
 void lista::DOS(int num){
 	if(num<0){
 	cout<<"El numero es menor que 0"<<endl;
@@ -241,28 +241,34 @@ void lista::TRES(){
     if (ListaVacia()){
            cout << "La lista esta vacia"<<endl;; 
     }else{
-        pnodo aux = primero;
-        int cont = 1;
-        int largo = largoLista();
-        while(largo!=0) {
-        	if(aux->siguiente->siguiente==NULL){
-        		pnodo final = aux;
-        		aux=aux->siguiente;
-        		InsertarPos(aux->valor-1, cont+3);
-        		InsertarPos(aux->valor+1, cont+1);
-	            InsertarPos(final->valor+1, cont);
-	            InsertarPos(final->valor-1, cont+2);
-        		break;
-			}else{
-				InsertarPos(aux->valor+1, cont);
-	            InsertarPos(aux->valor-1, cont+2);
-	            aux = aux->siguiente->siguiente;
-	            cont = cont+3;
-	            largo--;	
-			}
-        }
-    cout<<"Lista sucesor y antecesor: "<<endl;
-    Mostrar();
+    	if(largoLista()==1){
+    		pnodo aux1 = primero;
+    		InsertarInicio(aux1->valor+1);
+    		InsertarFinal(aux1->valor-1);
+		}else{
+			pnodo aux = primero;
+	        int cont = 1;
+	        int largo = largoLista();
+	        while(largo!=0) {
+	        	if(aux->siguiente->siguiente==NULL){
+	        		pnodo final = aux;
+	        		aux=aux->siguiente;
+	        		InsertarPos(aux->valor-1, cont+3);
+	        		InsertarPos(aux->valor+1, cont+1);
+		            InsertarPos(final->valor+1, cont);
+		            InsertarPos(final->valor-1, cont+2);
+	        		break;
+				}else{
+					InsertarPos(aux->valor+1, cont);
+		            InsertarPos(aux->valor-1, cont+2);
+		            aux = aux->siguiente->siguiente;
+		            cont = cont+3;
+		            largo--;	
+				}
+	        }
+		}
+	cout<<"Lista sucesor y antecesor: "<<endl;
+	Mostrar();
    }
 }
 
@@ -293,7 +299,7 @@ void lista::CUATRO(){
 	cout<<"Lista con contador de repetidos: "<<endl;
 	while(final!=NULL){
 		flag=true;
-		cout<<final->valor<<"-"<<final->veces<<"->";
+		cout<<final->valor<<"-"<<final->veces<<"->  ";
 		final = final->siguiente;
 	}if(!flag){
 		cout<<"La lista esta vacia"<<endl;
